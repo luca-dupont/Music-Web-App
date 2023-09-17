@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" href="data:,">
+    <title>Youtube Music (Free)</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        details > summary {
+            font-size: 2rem;
+            font-weight: bold;
+            border: 2px solid #000;
+            margin: 1px;
+            color: red;
+            border-color: #000;
+            cursor: pointer;
+        }
+        .song {
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        h1 {
+            text-decoration: underline;
+            margin-top: 40px;
+            font-size: 36px;
+        }
+        .button {
+            margin: 13px;
+            margin-left: 0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f44336;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #e60000;
+        }
+        .back_button {
+            margin: 1.2rem 0;
+            text-align: left;
+            display: flex;
+            border-radius: 2rem;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            font-size: larger;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        .back_button:hover {
+            background-color: #e60000;
+        }
+        .back_button:focus {
+            outline: none;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .input {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .input:focus {
+            outline: none;
+        }
+        .new_playlist {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button class="back_button" name="back_button" onclick="window.location.href='http://127.0.0.1:5000/main'">Back</button>
+    <h1>Library</h1>
+    <details>
+        <summary id="title">Downloaded Songs</summary>
+        {{ html|safe }}
+    </details>
+    <details>
+        <summary id="title">Playlists</summary>
+        <label style="text-decoration: underline;">Add New Playlist</label>
+        <form action="" method="post">
+            <div class="new_playlist">
+                <input type="text" id="new_playlist" name="new_playlist" placeholder="Enter Playlist Name" class="input">
+                <button type="submit" name="submit" value="Submit" class="button">Add</button>
+            </div>
+        </form>
+        {{ html2|safe }}
+    </details>
+</body>
+</html>

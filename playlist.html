@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" href="data:,">
+    <title>Youtube Music (Free)</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+        .back_button {
+            margin: 20px;
+            padding: 10px 20px;
+            border-radius: 2rem;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            font-size: larger;
+            cursor: pointer;
+        }
+        .back_button:hover {
+            background-color: #d32f2f;
+        }
+        .back_button:focus {
+            outline: none;
+        }
+        h1 {
+            margin-top: 40px;
+            font-size: 36px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+        label {
+            font-size: 18px;
+            color: #333;
+            margin-right: 10px;
+        }
+        .input {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        details {
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+        summary {
+            padding: 8px;
+            width: 200px;
+            background-color: #eeeeee;
+            border-radius: 2rem;
+            box-shadow: 1px 1px 2px #bbbbbb;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #playlist-container {
+            margin-top: 40px;
+        }
+        audio {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button class = 'back_button' name = 'back_button' onclick="window.location.href='http://127.0.0.1:5000/library'">Back</button>
+    <h1>{{name}}</h1>
+    <form action="" method="post">
+        <div>
+            <label>Rename Playlist : </label>
+            <input style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" type="text" id="list_name" name="list_name" placeholder="Enter New Name"class='input'>
+            <button type="submit" name='submit' value="Submit" class="button">Submit</button>
+        </div>
+    </form> 
+    <div style="display: inline-flex;">
+        <details>
+            <summary>Add New Song From Library</summary>
+            {{ library_songs_html|safe }}
+        </details>
+    </div>
+    <div id="playlist-container">
+        {{ html|safe }}
+    </div>
+    <script>
+        const audioPlayers = document.querySelectorAll("audio");
+        let currentSongIndex = 0;
+
+        function playNextSong() {
+            currentSongIndex++;
+            if (currentSongIndex < audioPlayers.length) {
+                audioPlayers[currentSongIndex].play();
+            }
+        }
+
+        for (let i = 0; i < audioPlayers.length; i++) {
+            audioPlayers[i].addEventListener('ended', playNextSong);
+        }
+
+        // Start playing the first song when the page loads
+        if (audioPlayers.length > 0) {
+            audioPlayers[currentSongIndex].play();
+        }
+    </script>
+</body>
