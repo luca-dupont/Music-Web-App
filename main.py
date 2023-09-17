@@ -81,4 +81,4 @@ def remove_song(playlist,song):
     return redirect(f'/playlists/{playlist}')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
