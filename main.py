@@ -6,6 +6,10 @@ import shutil
 
 app = Flask(__name__,)
 message = ''
+if not os.path.exists('./downloads/playlists'):
+    os.mkdir('./downloads/playlists')
+if not os.path.exists('./directory'):
+    os.mkdir('./downloads')
 def download_vid(url) :
     global message
     message = ''
