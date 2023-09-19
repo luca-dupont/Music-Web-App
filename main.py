@@ -6,9 +6,12 @@ import shutil
 
 app = Flask(__name__,)
 message = ''
+
+#Create downloads and playlists folders
 if not os.path.exists('./downloads'):
     os.mkdir('./downloads')
     os.mkdir('./downloads/playlists')
+
 def download_vid(url) :
     global message
     message = ''
