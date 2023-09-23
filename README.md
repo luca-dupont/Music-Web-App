@@ -14,7 +14,7 @@ WARNING: This is a development server. Do not use it in a production deployment.
  * Running on http://127.0.0.1:5000
 Press CTRL+C to quit
 ```
-
+3. Access web application via browser address as shown in terminal window.
 
 ### Requirements
 The following packages are required for this script to work.
